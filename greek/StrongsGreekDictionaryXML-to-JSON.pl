@@ -120,6 +120,11 @@ foreach my $entry (@entries){
 		$strongsGreekDict{$strongs}->{derivation} = $value;
 	}
 	
+	if($el = $entry->findnodes('./pronunciation')->item(0)){
+		my $value = $el->getAttribute('strongs');
+		$value =~ s{\s+}{ }g;
+		$strongsGreekDict{$strongs}->{pron} = $value;
+	}
 	
 	#$strongsGreekDict{int $entry->getAttribute('strongs')} = $def;
 }
